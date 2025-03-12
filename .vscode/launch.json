@@ -1,0 +1,26 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/homes/fmorandi/stage_bytetrack/prova_gpu.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "python": "/homes/fmorandi/.conda/envs/bytetrack/bin/python"
+        },
+        {
+            "name": "debug",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "model.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+           
+        }
+    ]
+}
