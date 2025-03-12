@@ -1,2 +1,2 @@
 # Ignora la directory datasets/mot' nella commit su github
-/homes/fmorandi/stage_bytetrack/ByteTrack/datasets/mot
+ByteTrack/datasets/mot/annotations
