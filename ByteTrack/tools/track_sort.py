@@ -262,9 +262,23 @@ def main(exp, args, num_gpu):
         fmt[k] = fmt['mota']
     print(mm.io.render_summary(summary, formatters=fmt, namemap=mm.io.motchallenge_metric_names))
 
+    #AGGIUNTO: parte per stampare le metriche: 
+    metrics_output_path = os.path.join(results_folder, "metrics.txt")
+    with open(metrics_output_path, "w") as f:
+        f.write(mm.io.render_summary(summary, formatters=fmt, namemap=mm.io.motchallenge_metric_names))
+    logger.info(f"Metrics saved in {metrics_output_path}")
+
     metrics = mm.metrics.motchallenge_metrics + ['num_objects']
     summary = mh.compute_many(accs, names=names, metrics=metrics, generate_overall=True)
     print(mm.io.render_summary(summary, formatters=mh.formatters, namemap=mm.io.motchallenge_metric_names))
+
+    #AGGIUNTO: parte per stampare le metriche:
+    metrics_output_path = os.path.join(results_folder, "metrics.txt")
+    with open(metrics_output_path, "a") as f: 
+         f.write("\n")  # Per separare le due sezioni
+         f.write(mm.io.render_summary(summary, formatters=mh.formatters, namemap=mm.io.motchallenge_metric_names))
+    logger.info(f"Metrics appended to {metrics_output_path}")
+
     logger.info('Completed')
 
 
