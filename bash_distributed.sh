@@ -8,13 +8,13 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --gres=gpu:2
 #SBATCH --mem=80G
-#SBATCH --time=00:10:00
-# --constraint=gpu_A40_48G|gpu_L40S_48G
+#SBATCH --time=15:00:00
+#SBATCH --constraint=gpu_A40_48G|gpu_L40S_48G
 #--nodelist=ailb-login-03
 
 
 # Attiva l'ambiente Conda
-source activate bytetrack  # Assicurati che "bytetrack" sia l'ambiente corretto
+source activate yolox  # Assicurati che "bytetrack" sia l'ambiente corretto
 
 
 # Controlla che Conda sia attivato correttamente
@@ -37,4 +37,4 @@ python -c "import torch; print('CUDA version:', torch.version.cuda)"
 cd /homes/fmorandi/stage_bytetrack/ByteTrack || exit 1
 
 # Lancia il training
-python3 tools/train.py -f exps/example/motsynth/yolox_s_motsynth.py -d 2 -b 8 --fp16 -o -c pretrained/yolox_s.pth
+python3 tools/train.py -f exps/example/motsynth/yolox_s_motsynth.py -d 2 -b 16 --fp16 -o -c pretrained/yolox_s.pth

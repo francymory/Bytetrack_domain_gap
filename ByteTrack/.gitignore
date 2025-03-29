@@ -142,3 +142,4 @@ YOLOX_outputs
 
 #aggiunti da me
 datasets/mot/annotations
+datasets/motsynth_motchallenge/comb_annotations

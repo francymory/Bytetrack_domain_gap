@@ -29,7 +29,7 @@ def remove_useless_info(coco):
             anno['visibility'] = num / anno['num_keypoints']
             anno.pop("keypoints", None)
             anno.pop("num_keypoints", None)
-            anno.pop("ped_id", None)
+            anno.pop("model_id", None)
             anno.pop("attributes", None)
 
 class MOTSynthCOCODataset(Dataset):
@@ -81,7 +81,7 @@ class MOTSynthCOCODataset(Dataset):
         im_ann = self.coco.loadImgs(id_)[0]
         width = im_ann["width"]
         height = im_ann["height"]
-        frame_id = im_ann["id"]
+        frame_id = im_ann["frame_n"]
         video_id = im_ann["seq_name"]
         anno_ids = self.coco.getAnnIds(imgIds=[int(id_)], iscrowd=False)
         annotations = self.coco.loadAnns(anno_ids)
@@ -103,7 +103,7 @@ class MOTSynthCOCODataset(Dataset):
             cls = self.class_ids.index(obj["category_id"])
             res[ix, 0:4] = obj["clean_bbox"]
             res[ix, 4] = cls
-            res[ix, 5] = obj["model_id"]
+            res[ix, 5] = obj["ped_id"]
 
         file_name = im_ann["file_name"] if "file_name" in im_ann else "{:012}".format(id_) + ".jpg"
         img_info = (height, width, frame_id, video_id, file_name)
